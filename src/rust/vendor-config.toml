@@ -1,0 +1,9 @@
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/josiahparry/serde_esri"]
+git = "https://github.com/josiahparry/serde_esri"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
