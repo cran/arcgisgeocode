@@ -203,7 +203,7 @@ geocode_addresses <- function(
   if (is.null(batch_size)) {
     # split the difference between max and suggested if not provided
     # this gives us balanced number
-    batch_size <- mean(c(suggested_batch_size, max_batch_size))
+    batch_size <- floor(mean(c(suggested_batch_size, max_batch_size)))
   } else if (batch_size > max_batch_size) {
     cli::cli_warn(c(
       "{.arg batch_size} exceeds maximum supported by service: {max_batch_size}",
@@ -285,15 +285,25 @@ geocode_addresses <- function(
   # RcppSimdJson and _not_ the Rust based implementation
   use_custom_json_processing <- has_custom_fields(geocoder)
 
-  # TODO Handle errors
-  all_results <- lapply(all_resps, function(.resp) {
-    string <- httr2::resp_body_string(.resp)
-    parse_locations_res(
-      string,
-      use_custom_json_processing
-    )
-  })
+  # pre-allocate the result list
+  all_results <- vector(mode = "list", n_chunks)
 
+  # browser()
+  for (i in seq_len(n_chunks)) {
+    .resp <- all_resps[[i]]
+    string <- httr2::resp_body_string(.resp)
+    start <- indices[["start"]][i]
+    end <- indices[["end"]][i]
+    n <- (end - start) + 1
+    all_results[[i]] <- parse_locations_res(
+      string,
+      use_custom_json_processing,
+      n,
+      geocoder
+    )
+  }
+
+  # browser()
   # combine all the results
   results <- rbind_results(all_results)
 
@@ -322,7 +332,13 @@ geocode_addresses <- function(
     for (cnd in error_messages) rlang::cnd_signal(cnd)
   }
 
-  sort_asap(results, "result_id")
+  sort_col <- if (use_custom_json_processing) {
+    "ResultID"
+  } else {
+    "result_id"
+  }
+
+  sort_asap(results, sort_col)
 }
 
 parse_locations_res <- function(
@@ -360,7 +376,14 @@ parse_locations_res <- function(
 #' @keywords internal
 #' @noRd
 parse_custom_loc_json <- function(json, geocoder, n, call = rlang::caller_env()) {
-  tbl_to_fill <- ptype_tbl(geocoder$candidateFields[, c("name", "type")], n = n, call = call)
+  tbl_to_fill <- ptype_tbl(
+    rbind(
+      c("ResultID", "esriFieldTypeInteger"),
+      geocoder$candidateFields[, c("name", "type")]
+    ),
+    n = n,
+    call = call
+  )
   parse_custom_location_json_(json, tbl_to_fill)
 }
 
@@ -400,6 +423,12 @@ sort_asap <- function(.df, .col, call = rlang::caller_env()) {
   check_data_frame(.df)
 
   if (nrow(.df) == 0) {
+    return(.df)
+  }
+
+  # check to see if `.col` exists
+  if (is.null(.df[[.col]])) {
+    cli::cli_warn("Column {.val {.col}} is not present. Results may be out of order.")
     return(.df)
   }
 

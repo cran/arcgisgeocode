@@ -1,6 +1,6 @@
 Package: arcgisgeocode
 Title: A Robust Interface to ArcGIS 'Geocoding Services'
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: 
     person("Josiah", "Parry", , "josiah.parry@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-9910-865X"))
@@ -25,11 +25,11 @@ Encoding: UTF-8
 Language: en
 RoxygenNote: 7.3.1
 SystemRequirements: Cargo (Rust's package manager), rustc
-Depends: R (>= 2.10)
+Depends: R (>= 4.2)
 LazyData: true
 NeedsCompilation: yes
-Packaged: 2024-05-23 13:06:20 UTC; josiahparry
+Packaged: 2024-07-02 18:53:39 UTC; josiahparry
 Author: Josiah Parry [aut, cre] (<https://orcid.org/0000-0001-9910-865X>)
 Maintainer: Josiah Parry <josiah.parry@gmail.com>
 Repository: CRAN
-Date/Publication: 2024-05-25 09:50:09 UTC
+Date/Publication: 2024-07-03 07:40:06 UTC
