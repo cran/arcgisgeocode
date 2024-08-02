@@ -1,6 +1,6 @@
-1f84a51daef749e17d56a1fcea7c0c03 *DESCRIPTION
+658fb490ef9b9ca307afd7a308ae9942 *DESCRIPTION
 75b030a57edcce51b6ac7cce02019f96 *NAMESPACE
-b4785d724496ee6c7695def5f8df10c2 *NEWS.md
+dfc1b17717b36d9d1c7bdd9f5fe3a76a *NEWS.md
 9e2f0e395052065bcbbfbdaf5686db5a *R/arcgeocode-package.R
 66c7ebdc4cd71440ec1ebd57a7f4d9b4 *R/core-batch-geocode.R
 3007e05cfed0233e8d9809bc840c8ce2 *R/core-find-candidates.R
@@ -40,8 +40,8 @@ e30f9f5eb3689c573c5a0fb61edb2f02 *src/Makevars.win
 fb8930018c2c8f7625205138126d6b26 *src/arcgeocode-win.def
 0e7e3916be75e37ee2ec95dd1a1101f4 *src/arcgisgeocode-win.def
 6eb689c669b5c0d0e080bc4391c38912 *src/entrypoint.c
-9056371138af0d17093f51167593d56e *src/rust/Cargo.lock
-0055e64b31c35ec020ff69972dd71923 *src/rust/Cargo.toml
+9fcd2f3ce4625c5c50ed112f1752d437 *src/rust/Cargo.lock
+c75b5740799c6d8e3a2f83bd1df086a6 *src/rust/Cargo.toml
 403a29d19919f6997c894b1e3b891ebe *src/rust/src/batch_geocode.rs
 93727d32d65f4ed910af03ecfd504015 *src/rust/src/find_candidates.rs
 aa13b8438accb3c392f0c121ed519eaf *src/rust/src/iso3166.rs
@@ -49,8 +49,8 @@ aa13b8438accb3c392f0c121ed519eaf *src/rust/src/iso3166.rs
 669ea5bf1240f2118556b2ae728b5326 *src/rust/src/parse_custom_attrs.rs
 1c0867cb86e0cf7a531693e12a299972 *src/rust/src/reverse.rs
 39356917d42171d05962581c5a9924c1 *src/rust/src/suggest.rs
-c71589f8917d1d74c29302746fe25903 *src/rust/vendor-config.toml
-56df99ac764fa4c1cb97fd7809956c84 *src/rust/vendor.tar.xz
+6adc657ddbdb122e74e8c6f97bf562ca *src/rust/vendor-config.toml
+94e56c2fbe7a95bb28a4cab420759258 *src/rust/vendor.tar.xz
 69fcc5288d5d5486ad076c2dc0cd444b *tests/testthat.R
 9599ee867474160a3c421d6ccf0d1489 *tests/testthat/test-obj_as_points.R
 2a61daea627d15af2c937c1ce2b73f8d *tests/testthat/test-search-extent.R
