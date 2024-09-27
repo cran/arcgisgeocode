@@ -1,6 +1,6 @@
 Package: arcgisgeocode
 Title: A Robust Interface to ArcGIS 'Geocoding Services'
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: 
     person("Josiah", "Parry", , "josiah.parry@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-9910-865X"))
@@ -16,7 +16,7 @@ Description: A very fast and robust interface to ArcGIS 'Geocoding
 License: Apache License (>= 2)
 URL: https://github.com/r-arcgis/arcgisgeocode,
         https://r.esri.com/arcgisgeocode/
-Imports: arcgisutils (>= 0.3.0), cli, curl, httr2 (>= 1.0.0), jsonify,
+Imports: arcgisutils (>= 0.3.0), cli, curl, httr2 (>= 1.0.5), jsonify,
         RcppSimdJson, rlang (>= 1.1.0), sf
 Suggests: data.table, dplyr, testthat (>= 3.0.0)
 Config/rextendr/version: 0.3.1.9000
@@ -24,12 +24,12 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en
 RoxygenNote: 7.3.1
-SystemRequirements: Cargo (Rust's package manager), rustc
+SystemRequirements: Cargo (Rust's package manager), rustc >= 1.67
 Depends: R (>= 4.2)
 LazyData: true
 NeedsCompilation: yes
-Packaged: 2024-07-31 14:39:14 UTC; josiahparry
+Packaged: 2024-09-26 19:19:24 UTC; josiahparry
 Author: Josiah Parry [aut, cre] (<https://orcid.org/0000-0001-9910-865X>)
 Maintainer: Josiah Parry <josiah.parry@gmail.com>
 Repository: CRAN
-Date/Publication: 2024-08-02 12:30:02 UTC
+Date/Publication: 2024-09-27 14:50:10 UTC
